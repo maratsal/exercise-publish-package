@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build ./sample-packages/docker/ --tag ghcr.io/$GITHUB_REPOSITORY_OWNER/hello:latest
     - name: Authenticate with docker repo
-      run: echo $GITHUB_TOKEN | docker login ghcr.io -u $GITHUB_REPOSITORY_OWNER --password-stdin
+      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u $GITHUB_REPOSITORY_OWNER --password-stdin
     - name: Push the Docker image
       run: docker push ghcr.io/$GITHUB_REPOSITORY_OWNER/hello:latest
       
